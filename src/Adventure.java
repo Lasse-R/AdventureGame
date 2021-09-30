@@ -32,6 +32,7 @@ public class Adventure {
 
     public void start() {
 
+
         currentRoom = room1;
 
         room1.setEast(room2);
@@ -78,7 +79,7 @@ public class Adventure {
                     System.out.println("You cant go that way");
                 } else {
                     currentRoom = currentRoom.getNorth();
-                    System.out.println(currentRoom.toString());
+                    System.out.println(currentRoom.getDescription());
                 }
 
             }
@@ -88,7 +89,7 @@ public class Adventure {
                     System.out.println("You cant go that way");
                 } else {
                     currentRoom = currentRoom.getSouth();
-                    System.out.println("room desc" + currentRoom.getRoomNumber());
+                    System.out.println(currentRoom.getDescription());
                 }
 
             }
@@ -98,7 +99,7 @@ public class Adventure {
                     System.out.println("You cant go that way");
                 } else {
                     currentRoom = currentRoom.getEast();
-                    System.out.println("room desc" + currentRoom.getRoomNumber());
+                    System.out.println(currentRoom.getDescription());
                 }
 
             }
@@ -108,7 +109,7 @@ public class Adventure {
                     System.out.println("You cant go that way");
                 } else {
                     currentRoom = currentRoom.getWest();
-                    System.out.println("room desc" + currentRoom.getRoomNumber());
+                    System.out.println(currentRoom.getDescription());
                 }
 
             }
