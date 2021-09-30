@@ -9,9 +9,9 @@ public class Room {
     private String name;
     private String description;
 
-    Room(){
+    Room(){    }
 
-    }
+    Room(int roomNumber){}
 
     public void setNorth(Room north){
         this.north = north;

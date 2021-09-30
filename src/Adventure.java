@@ -7,24 +7,34 @@ public class Adventure {
         boolean gameIsRunning = true;
         boolean validAnswer = false;
 
-        Room room1 = new Room();
-        Room room2 = new Room();
-        Room room3 = new Room();
-        Room room4 = new Room();
-        Room room5 = new Room();
-        Room room6 = new Room();
-        Room room7 = new Room();
-        Room room8 = new Room();
-        Room room9 = new Room();
+        Room room1 = new Room(1);
+        Room room2 = new Room(2);
+        Room room3 = new Room(3);
+        Room room4 = new Room(4);
+        Room room5 = new Room(5);
+        Room room6 = new Room(6);
+        Room room7 = new Room(7);
+        Room room8 = new Room(8);
+        Room room9 = new Room(9);
 
-
-
-
+    Room currentRoom = new Room();
 
     public void start(){
 
+        currentRoom = room1;
+
+        room1.setRoomNumber(1);
+        room2.setRoomNumber(2);
+        room3.setRoomNumber(3);
+        room4.setRoomNumber(4);
+        room5.setRoomNumber(5);
+        room6.setRoomNumber(6);
+        room7.setRoomNumber(7);
+        room8.setRoomNumber(8);
+        room9.setRoomNumber(9);
+
         room1.setEast(room2); room1.setSouth(room4);
-        room2.setWest(room1); room2.setEast(room3);
+        room2.setWest(room1); room2.setEast(room3); room2.setRoomNumber(2);
         room3.setWest(room2); room3.setSouth(room6);
         room4.setNorth(room1); room4.setSouth(room7);
         room5.setSouth(room8);
@@ -54,18 +64,47 @@ public class Adventure {
 
             if (playerInput.equalsIgnoreCase("go north")) {
                 System.out.println("Going North!");
+                if(currentRoom.getNorth() == null){
+                    System.out.println("You cant go that way");
+                }
+                else{
+                    currentRoom = currentRoom.getNorth();
+                    System.out.println("room desc" + currentRoom.getRoomNumber());
+                }
 
             }
             if (playerInput.equalsIgnoreCase("go south")) {
                 System.out.println("Going South!");
+                if(currentRoom.getSouth() == null){
+                    System.out.println("You cant go that way");
+                }
+                else{
+                    currentRoom = currentRoom.getSouth();
+                    System.out.println("room desc" + currentRoom.getRoomNumber());
+                }
+
 
             }
             if (playerInput.equalsIgnoreCase("go east")) {
                 System.out.println("Going East!");
+                if(currentRoom.getEast() == null){
+                    System.out.println("You cant go that way");
+                }
+                else{
+                    currentRoom = currentRoom.getEast();
+                    System.out.println("room desc" + currentRoom.getRoomNumber());
+                }
 
             }
             if (playerInput.equalsIgnoreCase("go west")) {
                 System.out.println("Going West!");
+                if(currentRoom.getWest() == null){
+                    System.out.println("You cant go that way");
+                }
+                else{
+                    currentRoom = currentRoom.getWest();
+                    System.out.println("room desc" + currentRoom.getRoomNumber());
+                }
 
             }
             if (playerInput.equalsIgnoreCase("look")) {
