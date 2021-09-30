@@ -11,7 +11,7 @@ public class Room {
 
     Room(){    }
 
-    Room(int roomNumber){}
+    Room(int roomNumber){    }
 
     public void setNorth(Room north){
         this.north = north;
