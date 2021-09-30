@@ -17,7 +17,6 @@ public class Adventure {
     FluffyDescription description8 = new FluffyDescription();
     FluffyDescription description9 = new FluffyDescription();
 
-
     Room room1 = new Room(1, "You find yourself at a cave entrance.");
     Room room2 = new Room(2, description2.toString());
     Room room3 = new Room(3, description3.toString());
@@ -32,27 +31,16 @@ public class Adventure {
 
     public void start() {
 
-
         currentRoom = room1;
-
-        room1.setEast(room2);
-        room1.setSouth(room4);
-        room2.setWest(room1);
-        room2.setEast(room3);
-        room3.setWest(room2);
-        room3.setSouth(room6);
-        room4.setNorth(room1);
-        room4.setSouth(room7);
+        room1.setEast(room2); room1.setSouth(room4);
+        room2.setWest(room1); room2.setEast(room3);
+        room3.setWest(room2); room3.setSouth(room6);
+        room4.setNorth(room1); room4.setSouth(room7);
         room5.setSouth(room8);
-        room6.setNorth(room3);
-        room6.setSouth(room9);
-        room7.setNorth(room4);
-        room7.setEast(room8);
-        room8.setNorth(room5);
-        room8.setWest(room7);
-        room8.setWest(room9);
-        room9.setNorth(room6);
-        room9.setWest(room8);
+        room6.setNorth(room3); room6.setSouth(room9);
+        room7.setNorth(room4); room7.setEast(room8);
+        room8.setNorth(room5); room8.setWest(room7); room8.setWest(room9);
+        room9.setNorth(room6); room9.setWest(room8);
 
         System.out.println("Welcome to the game!");
         System.out.println("You now have 7 options:");
@@ -131,6 +119,9 @@ public class Adventure {
             if(playerInput.equalsIgnoreCase("xyzzy")){
                 currentRoom = room1;
                 System.out.println(room1.getDescription());
+                System.out.println("You are free of the cave again!");
+                System.out.println("You've won the game!");
+                gameIsRunning = false;
             }
             if (playerInput.equalsIgnoreCase("quit")) {
                 System.out.println("Quitting Game!");
