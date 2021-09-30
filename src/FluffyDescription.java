@@ -13,7 +13,7 @@ public class FluffyDescription {
             this.color = color;
         }
 
-        public FluffyDescriptions(){};
+        public void FluffyDescriptions(){};
 
         public String toString(){
             return "You stand " + areaType[random.nextInt(areaType.length)] + ", where " + color[random.nextInt(color.length)] +
@@ -21,4 +21,4 @@ public class FluffyDescription {
         }
 }
 
-}
+
