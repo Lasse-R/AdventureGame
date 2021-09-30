@@ -18,11 +18,11 @@ public class Adventure {
     FluffyDescription description9 = new FluffyDescription();
 
 
-    Room room1 = new Room(1, description1.toString());
+    Room room1 = new Room(1, "You find yourself at a cave entrance.");
     Room room2 = new Room(2, description2.toString());
     Room room3 = new Room(3, description3.toString());
     Room room4 = new Room(4, description4.toString());
-    Room room5 = new Room(5, description5.toString());
+    Room room5 = new Room(5, description5.toString(), "You find the magic word xyzzy");
     Room room6 = new Room(6, description6.toString());
     Room room7 = new Room(7, description7.toString());
     Room room8 = new Room(8, description8.toString());
@@ -55,8 +55,10 @@ public class Adventure {
         room9.setWest(room8);
 
         System.out.println("Welcome to the game!");
-        System.out.println("You now have 5 options:");
-        System.out.println("1: go north. 2: go east. 3: go south. 4: go west or 5: exit.");
+        System.out.println("You now have 7 options:");
+        System.out.println("1: go north or n. 2: go east or e. 3: go south or s. 4: go west or w or 5: look.\n" +
+                "6: help. 7: quit");
+        System.out.println(currentRoom.getDescription());
         while (gameIsRunning) {
             do {
                 System.out.print("Write Command: ");
@@ -66,24 +68,33 @@ public class Adventure {
                         playerInput.equalsIgnoreCase("go west") ||
                         playerInput.equalsIgnoreCase("go east") ||
                         playerInput.equalsIgnoreCase("quit") ||
-                        playerInput.equalsIgnoreCase("look")) {
+                        playerInput.equalsIgnoreCase("look") ||
+                        playerInput.equalsIgnoreCase("help") ||
+                        playerInput.equalsIgnoreCase("n") ||
+                        playerInput.equalsIgnoreCase("s") ||
+                        playerInput.equalsIgnoreCase("e") ||
+                        playerInput.equalsIgnoreCase("w") ||
+                        playerInput.equalsIgnoreCase("xyzzy")) {
                     validAnswer = true;
                 } else {
                     System.out.println("Invalid Input - try again!");
                 }
             } while (!validAnswer);
 
-            if (playerInput.equalsIgnoreCase("go north")) {
+            if (playerInput.equalsIgnoreCase("go north") || playerInput.equalsIgnoreCase("n")) {
                 System.out.println("Going North!");
                 if (currentRoom.getNorth() == null) {
                     System.out.println("You cant go that way");
                 } else {
                     currentRoom = currentRoom.getNorth();
                     System.out.println(currentRoom.getDescription());
+                    if(currentRoom == room5){
+                        System.out.println(room5.getTeleport());
+                    }
                 }
 
             }
-            if (playerInput.equalsIgnoreCase("go south")) {
+            if (playerInput.equalsIgnoreCase("go south") || playerInput.equalsIgnoreCase("s")) {
                 System.out.println("Going South!");
                 if (currentRoom.getSouth() == null) {
                     System.out.println("You cant go that way");
@@ -93,7 +104,7 @@ public class Adventure {
                 }
 
             }
-            if (playerInput.equalsIgnoreCase("go east")) {
+            if (playerInput.equalsIgnoreCase("go east") || playerInput.equalsIgnoreCase("e")) {
                 System.out.println("Going East!");
                 if (currentRoom.getEast() == null) {
                     System.out.println("You cant go that way");
@@ -103,7 +114,7 @@ public class Adventure {
                 }
 
             }
-            if (playerInput.equalsIgnoreCase("go west")) {
+            if (playerInput.equalsIgnoreCase("go west") || playerInput.equalsIgnoreCase("w")) {
                 System.out.println("Going West!");
                 if (currentRoom.getWest() == null) {
                     System.out.println("You cant go that way");
@@ -114,13 +125,20 @@ public class Adventure {
 
             }
             if (playerInput.equalsIgnoreCase("look")) {
-                System.out.println("You're looking around the room.");
-                System.out.println(room1);
+                System.out.println(currentRoom.getDescription());
 
+            }
+            if(playerInput.equalsIgnoreCase("xyzzy")){
+                currentRoom = room1;
+                System.out.println(room1.getDescription());
             }
             if (playerInput.equalsIgnoreCase("quit")) {
                 System.out.println("Quitting Game!");
                 gameIsRunning = false;
+            }
+            if(playerInput.equalsIgnoreCase("help")){
+                System.out.println("1: go north or n. 2: go east or e. 3: go south or s. 4: go west or w or 5: look.\n" +
+                        "6: help. 7: quit");
             }
 
         }
