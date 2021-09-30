@@ -17,20 +17,22 @@ public class Adventure {
         Room room8 = new Room();
         Room room9 = new Room();
 
-        /*
-        room1.north = null; room1.west = null; room1.south = room4; room1.east = room2;
-        room2.north = null; room2.west = room1; room2.south = null; room2.east = room3;
-        room3.north = null; room3.west = room2; room3.south = room6; room3.east = null;
-        room4.north = room1; room4.west = null; room4.south = room7; room4.east = null;
-        room5.north = null; room5.west = null; room5.south = room8; room5.east = null;
-        room6.north = room3; room6.west = null; room6.south = room9; room6.east = null;
-        room7.north = room4; room7.west = null; room7.south = null; room7.east = room8;
-        room8.north = room5; room8.west = room7; room8.south = null; room8.east = room9;
-        room9.north = room6; room9.west = room8; room9.south = null; room9.east = null;
 
-         */
 
-        public void start(){
+
+
+    public void start(){
+
+        room1.setEast(room2); room1.setSouth(room4);
+        room2.setWest(room1); room2.setEast(room3);
+        room3.setWest(room2); room3.setSouth(room6);
+        room4.setNorth(room1); room4.setSouth(room7);
+        room5.setSouth(room8);
+        room6.setNorth(room3); room6.setSouth(room9);
+        room7.setNorth(room4); room7.setEast(room8);
+        room8.setNorth(room5); room8.setWest(room7); room8.setWest(room9);
+        room9.setNorth(room6); room9.setEast(room8);
+
         System.out.println("Welcome to the game!");
         System.out.println("You now have 5 options:");
         System.out.println("1: go north. 2: go east. 3: go south. 4: go west or 5: exit.");
