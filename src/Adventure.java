@@ -39,7 +39,7 @@ public class Adventure {
         room5.setSouth(room8);
         room6.setNorth(room3); room6.setSouth(room9);
         room7.setNorth(room4); room7.setEast(room8);
-        room8.setNorth(room5); room8.setWest(room7); room8.setWest(room9);
+        room8.setNorth(room5); room8.setWest(room7); room8.setEast(room9);
         room9.setNorth(room6); room9.setWest(room8);
 
         System.out.println("Welcome to the game!");
