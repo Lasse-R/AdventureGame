@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class Adventure {
 
-    public static void main(String[] args) {
-
         Scanner scan = new Scanner(System.in);
         String playerInput;
         boolean gameIsRunning = true;
@@ -19,10 +17,7 @@ public class Adventure {
         Room room8 = new Room();
         Room room9 = new Room();
 
-        room1 = new Room("Room one", 1, "The room is dark and cold, you see " +
-                "doors in some of the walls but it's hard to distinguish what's left and right in the dark");
-
-
+        /*
         room1.north = null; room1.west = null; room1.south = room4; room1.east = room2;
         room2.north = null; room2.west = room1; room2.south = null; room2.east = room3;
         room3.north = null; room3.west = room2; room3.south = room6; room3.east = null;
@@ -33,7 +28,9 @@ public class Adventure {
         room8.north = room5; room8.west = room7; room8.south = null; room8.east = room9;
         room9.north = room6; room9.west = room8; room9.south = null; room9.east = null;
 
+         */
 
+        public void start(){
         System.out.println("Welcome to the game!");
         System.out.println("You now have 5 options:");
         System.out.println("1: go north. 2: go east. 3: go south. 4: go west or 5: exit.");
@@ -77,10 +74,11 @@ public class Adventure {
             if (playerInput.equalsIgnoreCase("quit")) {
                 System.out.println("Quitting Game!");
                 gameIsRunning = false;
+            }
 
             }
         }
 
 
     }
-}
+
