@@ -3,12 +3,36 @@ import java.util.Scanner;
 public class Adventure {
 
     public static void main(String[] args) {
+
         Scanner scan = new Scanner(System.in);
         String playerInput;
         boolean gameIsRunning = true;
         boolean validAnswer = false;
-        Room currentRoom = new Room("Room one", 1, "The room is dark and cold, you see " +
+
+        Room room1 = new Room();
+        Room room2 = new Room();
+        Room room3 = new Room();
+        Room room4 = new Room();
+        Room room5 = new Room();
+        Room room6 = new Room();
+        Room room7 = new Room();
+        Room room8 = new Room();
+        Room room9 = new Room();
+
+        room1 = new Room("Room one", 1, "The room is dark and cold, you see " +
                 "doors in some of the walls but it's hard to distinguish what's left and right in the dark");
+
+
+        room1.north = null; room1.west = null; room1.south = room4; room1.east = room2;
+        room2.north = null; room2.west = room1; room2.south = null; room2.east = room3;
+        room3.north = null; room3.west = room2; room3.south = room6; room3.east = null;
+        room4.north = room1; room4.west = null; room4.south = room7; room4.east = null;
+        room5.north = null; room5.west = null; room5.south = room8; room5.east = null;
+        room6.north = room3; room6.west = null; room6.south = room9; room6.east = null;
+        room7.north = room4; room7.west = null; room7.south = null; room7.east = room8;
+        room8.north = room5; room8.west = room7; room8.south = null; room8.east = room9;
+        room9.north = room6; room9.west = room8; room9.south = null; room9.east = null;
+
 
         System.out.println("Welcome to the game!");
         System.out.println("You now have 5 options:");
@@ -21,7 +45,7 @@ public class Adventure {
                         playerInput.equalsIgnoreCase("go South") ||
                         playerInput.equalsIgnoreCase("go west") ||
                         playerInput.equalsIgnoreCase("go east") ||
-                        playerInput.equalsIgnoreCase("exit") ||
+                        playerInput.equalsIgnoreCase("quit") ||
                         playerInput.equalsIgnoreCase("look")) {
                     validAnswer = true;
                 } else {
@@ -31,23 +55,29 @@ public class Adventure {
 
             if (playerInput.equalsIgnoreCase("go north")) {
                 System.out.println("Going North!");
+
             }
             if (playerInput.equalsIgnoreCase("go south")) {
                 System.out.println("Going South!");
+
             }
             if (playerInput.equalsIgnoreCase("go east")) {
                 System.out.println("Going East!");
+
             }
             if (playerInput.equalsIgnoreCase("go west")) {
                 System.out.println("Going West!");
+
             }
-            if (playerInput.equalsIgnoreCase("look")){
+            if (playerInput.equalsIgnoreCase("look")) {
                 System.out.println("You're looking around the room.");
-                System.out.println(currentRoom);
+                System.out.println(room1);
+
             }
-            if (playerInput.equalsIgnoreCase("exit")) {
+            if (playerInput.equalsIgnoreCase("quit")) {
                 System.out.println("Quitting Game!");
                 gameIsRunning = false;
+
             }
         }
 
