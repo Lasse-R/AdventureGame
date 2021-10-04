@@ -10,16 +10,20 @@ public class Room {
     private String description;
     private String teleport;
 
-    Room(){
-
-    }
+    Room(){ }
 
     Room(int roomNumber, String description){
         this.roomNumber = roomNumber;
         this.description = description;
     }
+    Room(int roomNumber, String description, String name){
+        this.roomNumber = roomNumber;
+        this.name = name;
+        this.description = description;
+    }
 
-    Room(int roomNumber, String description, String teleport){
+    Room(int roomNumber, String description, String teleport, String name){
+        this.name = name;
         this.roomNumber = roomNumber;
         this.description = description;
         this.teleport = teleport;
@@ -35,6 +39,7 @@ public class Room {
 
     public void setNorth(Room north){
         this.north = north;
+
     }
 
     public void setSouth(Room south){
@@ -43,10 +48,12 @@ public class Room {
 
     public void setWest(Room west){
         this.west = west;
-    }
+        }
 
     public void setEast(Room east){
         this.east = east;
+         // if(west == null){setWest(this);}      // har ikke gennemskuet hvordan det her virker "Lars"
+
     }
 
     public void setRoomNumber(int roomNumber){
