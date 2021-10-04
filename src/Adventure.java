@@ -17,12 +17,13 @@ public class Adventure {
     FluffyDescription description8 = new FluffyDescription();
     FluffyDescription description9 = new FluffyDescription();
 
-    Room room1 = new Room(1, "You stand inside a nice safe cave.", "The cozy cave");
+    Room room1 = new Room(1, "You stand inside a nice safe cave.",
+            "The cozy cave(with absolutely no issues, besides being a cave");
     Room room2 = new Room(2, description2.roomDescription(), description2.roomName());
     Room room3 = new Room(3, description3.roomDescription(), description3.roomName());
     Room room4 = new Room(4, description4.roomDescription(), description4.roomName());
     Room room5 = new Room(5, description5.roomDescription(),
-            "You find the magic word xyzzy, now what could you possibly do with that.", description5.roomName());
+            "A magic word \"xyzzy\" appears before you. Now what could you possibly do with that.", description5.roomName());
     Room room6 = new Room(6, description6.roomDescription(), description6.roomName());
     Room room7 = new Room(7, description7.roomDescription(), description7.roomName());
     Room room8 = new Room(8, description8.roomDescription(), description8.roomName());
@@ -34,7 +35,8 @@ public class Adventure {
 
         currentRoom = room1;
         room1.setEast(room2); room1.setSouth(room4);
-        room2.setWest(room1); room2.setEast(room3);
+        room2.setWest(room1);
+        room2.setEast(room3);
         room3.setWest(room2); room3.setSouth(room6);
         room4.setNorth(room1); room4.setSouth(room7);
         room5.setSouth(room8);
@@ -45,13 +47,13 @@ public class Adventure {
 
         System.out.println("Welcome to the game!");
         System.out.println("You have these options:");
-        System.out.println("1: go north or n. 2: go east or e. 3: go south or s. 4: go west or w or 5: look.\n" +
-                "6: help. 7: quit");
-        System.out.println("\nYou were teleported by an evil wizard. Now you have to find your way back out.");
+        System.out.println("1: \"go north\" (or just \"n\" etc.). 2: \"go east\" 3: \"go south\" 4: \"go west\" 5: \"look\".\n" +
+                "6: \"help\". 7: \"quit\"");
+        System.out.println("\nYou were teleported into a cave by an evil wizard. Now you have to find your way back out.");
         System.out.println(currentRoom.getDescription());
         while (gameIsRunning) {
             do {
-                System.out.print("What would you like to do?");
+                System.out.print("What would you like to do? ");
                 playerInput = scan.nextLine();
                 if (playerInput.equalsIgnoreCase("go north") ||
                         playerInput.equalsIgnoreCase("go south") ||
@@ -123,8 +125,8 @@ public class Adventure {
                 System.out.println(currentRoom.getDescription());
             }
             if(playerInput.equalsIgnoreCase("xyzzy")){
-                System.out.println("You are free of the cave again!");
-                System.out.println("You've completed the game! Thank you for playing!");
+                System.out.println("Congratulations. You are free of the cave again!");
+                System.out.println("Thank you for playing!");
                 gameIsRunning = false;
             }
             if (playerInput.equalsIgnoreCase("quit")) {
