@@ -52,7 +52,7 @@ public class Room {
 
     public void setEast(Room east){
         this.east = east;
-        // if(this.getWest() != this){east.setWest(this);}      // har ikke gennemskuet hvordan det her virker "Lars"
+        // if(this.getWest() != this){east.setWest(this);}      // har ikke gennemskuet hvordan det her virker
 
     }
 
