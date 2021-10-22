@@ -1,11 +1,24 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Adventure {
 
     Scanner scan = new Scanner(System.in);
+    Player player = new Player();
     private String playerInput;
     private boolean gameIsRunning = true;
     private boolean validAnswer = false;
+
+    ArrayList<Item> pile1 = new ArrayList<>();
+    ArrayList<Item> pile2 = new ArrayList<>();
+    ArrayList<Item> pile3 = new ArrayList<>();
+    ArrayList<Item> pile4 = new ArrayList<>();
+    ArrayList<Item> pile5 = new ArrayList<>();
+    ArrayList<Item> pile6 = new ArrayList<>();
+    ArrayList<Item> pile7 = new ArrayList<>();
+    ArrayList<Item> pile8 = new ArrayList<>();
+    ArrayList<Item> pile9 = new ArrayList<>();
+
 
     FluffyDescription description1 = new FluffyDescription();
     FluffyDescription description2 = new FluffyDescription();
@@ -17,17 +30,16 @@ public class Adventure {
     FluffyDescription description8 = new FluffyDescription();
     FluffyDescription description9 = new FluffyDescription();
 
-    Room room1 = new Room(1, "You stand inside a nice safe cave.",
-            "The cozy cave(with absolutely no issues, besides being a cave");
-    Room room2 = new Room(2, description2.roomDescription(), description2.roomName());
-    Room room3 = new Room(3, description3.roomDescription(), description3.roomName());
-    Room room4 = new Room(4, description4.roomDescription(), description4.roomName());
+    Room room1 = new Room(1, "You stand inside a nice safe cave. The cozy cave(with absolutely no issues, besides being a cave)");
+    Room room2 = new Room(2, description2.roomDescription(), description2.roomName(), pile2);
+    Room room3 = new Room(3, description3.roomDescription(), description3.roomName(), pile3);
+    Room room4 = new Room(4, description4.roomDescription(), description4.roomName(), pile4);
     Room room5 = new Room(5, description5.roomDescription(),
-            "A magic word \"xyzzy\" appears before you. Now what could you possibly do with that.", description5.roomName());
-    Room room6 = new Room(6, description6.roomDescription(), description6.roomName());
-    Room room7 = new Room(7, description7.roomDescription(), description7.roomName());
-    Room room8 = new Room(8, description8.roomDescription(), description8.roomName());
-    Room room9 = new Room(9, description9.roomDescription(), description9.roomName());
+            "A magic word \"xyzzy\" appears before you. Now what could you possibly do with that.", description5.roomName(), pile5);
+    Room room6 = new Room(6, description6.roomDescription(), description6.roomName(), pile6);
+    Room room7 = new Room(7, description7.roomDescription(), description7.roomName(), pile7);
+    Room room8 = new Room(8, description8.roomDescription(), description8.roomName(), pile8);
+    Room room9 = new Room(9, description9.roomDescription(), description9.roomName(), pile9);
 
     Room currentRoom = new Room();
 
@@ -53,6 +65,10 @@ public class Adventure {
         room9.setNorth(room6);
         room9.setWest(room8);
 
+        Item sword = new Weapon("Sword", "Sword", 1);
+
+        pile2.add(sword);
+
         System.out.println("Welcome to the game!");
         System.out.println("You have these options:");
         System.out.println("1: \"go north\" (or just \"n\" etc.). 2: \"go east\" 3: \"go south\" 4: \"go west\" 5: \"look\".\n" +
@@ -74,6 +90,8 @@ public class Adventure {
                         playerInput.equalsIgnoreCase("s") ||
                         playerInput.equalsIgnoreCase("e") ||
                         playerInput.equalsIgnoreCase("w") ||
+                        playerInput.equalsIgnoreCase("take") ||
+                        playerInput.equalsIgnoreCase("inventory") ||
                         playerInput.equalsIgnoreCase("xyzzy")) {
                     validAnswer = true;
                 } else {
@@ -131,6 +149,15 @@ public class Adventure {
             if (playerInput.equalsIgnoreCase("look")) {
                 System.out.println(currentRoom.getName());
                 System.out.println(currentRoom.getDescription());
+                System.out.println();
+            }
+            if(playerInput.equalsIgnoreCase("take")){
+                for(int i = 0; i < currentRoom.pile.size(); i++){
+                player.inventory.add(currentRoom.pile.get(i));}
+                currentRoom.pile.clear();
+            }
+            if(playerInput.equalsIgnoreCase("inventory")){
+                System.out.println(player.toString());
             }
             if (playerInput.equalsIgnoreCase("xyzzy")) {
                 System.out.println("Congratulations. You are free of the cave again!");

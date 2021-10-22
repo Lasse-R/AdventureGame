@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Room {
 
     private Room north;
@@ -9,6 +11,7 @@ public class Room {
     private String name;
     private String description;
     private String teleport;
+    ArrayList<Item> pile;
 
     Room(){ }
 
@@ -16,17 +19,19 @@ public class Room {
         this.roomNumber = roomNumber;
         this.description = description;
     }
-    Room(int roomNumber, String description, String name){
+    Room(int roomNumber, String description, String name, ArrayList<Item> pile){
         this.roomNumber = roomNumber;
         this.name = name;
         this.description = description;
+        this.pile = pile;
     }
 
-    Room(int roomNumber, String description, String teleport, String name){
+    Room(int roomNumber, String description, String teleport, String name, ArrayList<Item> pile){
         this.name = name;
         this.roomNumber = roomNumber;
         this.description = description;
         this.teleport = teleport;
+        this.pile = pile;
     }
 
     public void setTeleport(String teleport){
